@@ -1,101 +1,146 @@
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
+import { TimelineDemo } from "@/components/ui/timeline.demo";
+import { TextRevealByWord } from "@/components/ui/text-reveal";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="bg-white">
+      {/* Hero Section */}
+      <section id="hero" className="h-screen relative">
+        <div className="absolute inset-0 w-full h-full">
+          <SparklesCore
+            id="tsparticlesfullpage"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.4}
+            particleDensity={100}
+            className="w-full h-full"
+            particleColor="#2563eb"
+            speed={1}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="relative z-10 h-full">
+          <WavyBackground 
+            className="max-w-5xl mx-auto h-full flex items-center justify-center"
+            colors={["#2563eb", "#f97316"]}
+            backgroundFill="transparent"
+            blur={5}
+            waveOpacity={0.5}
+            speed="slow"
+          >
+            <div className="text-center">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl text-[#111827] font-outfit font-bold">
+                France
+                <br />
+                Annobil
+              </h1>
+              <p className="text-lg md:text-xl mt-6 text-[#111827]/80 font-inter max-w-2xl mx-auto">
+              I’m a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics.
+              </p>
+            </div>
+          </WavyBackground>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="projects" className="min-h-screen bg-white">
+        <TimelineDemo />
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="min-h-screen bg-[#111827] relative">
+        {/* Background Slider */}
+        <div className="absolute inset-0 opacity-10 flex">
+          <InfiniteSlider duration={50} direction="vertical" className="w-1/3">
+            <div className="flex flex-col gap-4">
+              <Image src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="AI" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0" alt="Blockchain" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Gaming" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e" alt="Robotics" width={300} height={300} className="object-cover rounded-xl" />
+            </div>
+          </InfiniteSlider>
+          <InfiniteSlider duration={50} direction="vertical" reverse className="w-1/3">
+            <div className="flex flex-col gap-4">
+              <Image src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="Code" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1644088379091-d574269d422f" alt="Web3" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1626387346567-68d0c49af34a" alt="VR" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Innovation" width={300} height={300} className="object-cover rounded-xl" />
+            </div>
+          </InfiniteSlider>
+          <InfiniteSlider duration={50} direction="vertical" className="w-1/3">
+            <div className="flex flex-col gap-4">
+              <Image src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d" alt="Crypto" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1535378917042-10a22c95931a" alt="Future" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1614066882476-d682f3d3b07b" alt="Metaverse" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1436891620584-47fd0e565afb" alt="Puzzle" width={300} height={300} className="object-cover rounded-xl" />
+            </div>
+          </InfiniteSlider>
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-6 relative z-10">
+          <h2 className="text-4xl md:text-6xl font-outfit font-bold text-white pt-16 mb-12 max-w-3xl">
+            About Me
+          </h2>
+          <TextRevealByWord 
+            text="I&apos;m a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics. I thrive on innovation, problem-solving, and exploring new ideas that challenge the way we think. Beyond technology, I enjoy anime, thought-provoking mysteries, and puzzles that keep my mind engaged. I believe in the power of creativity and forward-thinking solutions, always seeking ways to push boundaries while maintaining a balanced, enjoyable life. Whether it&apos;s building cutting-edge solutions, discussing the future of decentralized systems, or simply exploring the next big idea, I&apos;m always excited to dive in."
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="min-h-[50vh] bg-white py-20">
+        <div className="container mx-auto px-6 mb-10">
+          <h2 className="text-4xl md:text-6xl font-outfit font-bold text-[#111827] mb-12 max-w-3xl">
+            Skills & Technologies
+          </h2>
+        </div>
+        <InfiniteSlider duration={30} className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">HTML5</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">CSS3</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">JavaScript</p>
+            </div>
+          </div>
+        </InfiniteSlider>
+        <InfiniteSlider duration={30} reverse className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#f97316]">MySQL</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#f97316]">jQuery</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#f97316]">Bootstrap</p>
+            </div>
+          </div>
+        </InfiniteSlider>
+        <InfiniteSlider duration={30}>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">WordPress</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">React</p>
+            </div>
+            <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">Next.js</p>
+            </div>
+          </div>
+        </InfiniteSlider>
+      </section>
+
+      <StackedCircularFooter />
+    </main>
   );
 }
