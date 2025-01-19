@@ -1,7 +1,20 @@
 "use client";
-import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
+import { cn } from "@/lib/utils";
+
+interface WavyBackgroundProps {
+  children: React.ReactNode;
+  className?: string;
+  containerClassName?: string;
+  colors?: string[];
+  waveWidth?: number;
+  backgroundFill?: string;
+  blur?: number;
+  speed?: "slow" | "fast";
+  waveOpacity?: number;
+  [key: string]: unknown;
+}
 
 export const WavyBackground = ({
   children,
@@ -14,27 +27,13 @@ export const WavyBackground = ({
   speed = "fast",
   waveOpacity = 0.5,
   ...props
-}: {
-  children?: any;
-  className?: string;
-  containerClassName?: string;
-  colors?: string[];
-  waveWidth?: number;
-  backgroundFill?: string;
-  blur?: number;
-  speed?: "slow" | "fast";
-  waveOpacity?: number;
-  [key: string]: any;
-}) => {
+}: WavyBackgroundProps) => {
   const noise = createNoise3D();
-  let w: number,
-    h: number,
-    nt: number,
-    i: number,
-    x: number,
-    ctx: any,
-    canvas: any;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [time, setTime] = useState(0);
+
   const getSpeed = () => {
     switch (speed) {
       case "slow":
@@ -47,18 +46,20 @@ export const WavyBackground = ({
   };
 
   const init = () => {
-    canvas = canvasRef.current;
-    ctx = canvas.getContext("2d");
-    w = ctx.canvas.width = window.innerWidth;
-    h = ctx.canvas.height = window.innerHeight;
-    ctx.filter = `blur(${blur}px)`;
-    nt = 0;
-    window.onresize = function () {
-      w = ctx.canvas.width = window.innerWidth;
-      h = ctx.canvas.height = window.innerHeight;
-      ctx.filter = `blur(${blur}px)`;
-    };
-    render();
+    if (!canvasRef.current) return;
+    const context = canvasRef.current.getContext("2d");
+    if (!context) return;
+    
+    setCtx(context);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    canvasRef.current.width = width;
+    canvasRef.current.height = height;
+    context.filter = `blur(${blur}px)`;
+    
+    setDimensions({ width, height });
+    setTime(0);
   };
 
   const waveColors = colors ?? [
@@ -68,40 +69,51 @@ export const WavyBackground = ({
     "#e879f9",
     "#22d3ee",
   ];
-  const drawWave = (n: number) => {
-    nt += getSpeed();
-    for (i = 0; i < n; i++) {
+
+  const drawWave = () => {
+    if (!ctx || !dimensions.width || !dimensions.height) return;
+    
+    setTime(t => t + getSpeed());
+    
+    for (let i = 0; i < 5; i++) {
       ctx.beginPath();
       ctx.lineWidth = waveWidth || 50;
       ctx.strokeStyle = waveColors[i % waveColors.length];
-      for (x = 0; x < w; x += 5) {
-        var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+      
+      for (let x = 0; x < dimensions.width; x += 5) {
+        const y = noise(x / 800, 0.3 * i, time) * 100;
+        ctx.lineTo(x, y + dimensions.height * 0.5);
       }
+      
       ctx.stroke();
       ctx.closePath();
     }
   };
 
-  let animationId: number;
-  const render = () => {
-    ctx.fillStyle = backgroundFill || "black";
-    ctx.globalAlpha = waveOpacity || 0.5;
-    ctx.fillRect(0, 0, w, h);
-    drawWave(5);
-    animationId = requestAnimationFrame(render);
-  };
-
   useEffect(() => {
     init();
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
+    window.addEventListener("resize", init);
+    return () => window.removeEventListener("resize", init);
   }, []);
+
+  useEffect(() => {
+    if (!ctx || !dimensions.width || !dimensions.height) return;
+    
+    let animationId: number;
+    const render = () => {
+      ctx.fillStyle = backgroundFill || "black";
+      ctx.globalAlpha = waveOpacity || 0.5;
+      ctx.fillRect(0, 0, dimensions.width, dimensions.height);
+      drawWave();
+      animationId = requestAnimationFrame(render);
+    };
+    
+    render();
+    return () => cancelAnimationFrame(animationId);
+  }, [ctx, dimensions]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
-    // I'm sorry but i have got to support it on safari.
     setIsSafari(
       typeof window !== "undefined" &&
         navigator.userAgent.includes("Safari") &&
@@ -119,11 +131,10 @@ export const WavyBackground = ({
       <canvas
         className="absolute inset-0 z-0"
         ref={canvasRef}
-        id="canvas"
         style={{
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
-      ></canvas>
+      />
       <div className={cn("relative z-10", className)} {...props}>
         {children}
       </div>
