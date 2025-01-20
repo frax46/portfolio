@@ -79,7 +79,7 @@ Whether it's building cutting-edge solutions, discussing the future of decentral
             <div className="flex flex-col gap-4">
               <Image src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="Code" width={300} height={300} className="object-cover rounded-xl" />
               <Image src="https://images.unsplash.com/photo-1644088379091-d574269d422f" alt="Web3" width={300} height={300} className="object-cover rounded-xl" />
-              <Image src="https://images.unsplash.com/photo-1626387346567-68d0c49af34a" alt="VR" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0" alt="VR" width={300} height={300} className="object-cover rounded-xl" />
               <Image src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Innovation" width={300} height={300} className="object-cover rounded-xl" />
             </div>
           </InfiniteSlider>
@@ -87,7 +87,7 @@ Whether it's building cutting-edge solutions, discussing the future of decentral
             <div className="flex flex-col gap-4">
               <Image src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d" alt="Crypto" width={300} height={300} className="object-cover rounded-xl" />
               <Image src="https://images.unsplash.com/photo-1535378917042-10a22c95931a" alt="Future" width={300} height={300} className="object-cover rounded-xl" />
-              <Image src="https://images.unsplash.com/photo-1614066882476-d682f3d3b07b" alt="Metaverse" width={300} height={300} className="object-cover rounded-xl" />
+              <Image src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Metaverse" width={300} height={300} className="object-cover rounded-xl" />
               <Image src="https://images.unsplash.com/photo-1436891620584-47fd0e565afb" alt="Puzzle" width={300} height={300} className="object-cover rounded-xl" />
             </div>
           </InfiniteSlider>
