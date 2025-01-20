@@ -20,8 +20,9 @@ interface ParticlesProps {
 }
 
 export const SparklesCore = (props: ParticlesProps) => {
+  const generatedId = useId();
   const {
-    id = useId(),
+    id = generatedId,
     className,
     background = "transparent",
     minSize = 0.6,
@@ -74,7 +75,7 @@ export const SparklesCore = (props: ParticlesProps) => {
           enable: false,
           mode: "repulse",
         },
-        resize: true as any,
+        resize: true,
       },
       modes: {
         push: {
@@ -151,7 +152,8 @@ export const SparklesCore = (props: ParticlesProps) => {
         close: true,
         fill: true,
         options: {},
-        type: {} as ISourceOptions | undefined,
+        // @ts-ignore -- Type mismatch in tsparticles types
+        type: "circle",
       },
       groups: {},
       move: {
