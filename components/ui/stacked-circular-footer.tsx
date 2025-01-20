@@ -9,7 +9,7 @@ function StackedCircularFooter() {
         <div className="flex flex-col items-center">
           <div className="mb-8 rounded-full bg-[#2563eb]/10 p-2 w-20 h-20 relative overflow-hidden">
             <Image
-              src="/afro.webp"
+              src="/france.png"
               alt="France" 
               fill
               className="object-cover"

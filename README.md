@@ -1,55 +1,24 @@
-# Personal Portfolio
-
-A modern, animated portfolio website built with Next.js, featuring:
-
-- Animated hero section with sparkles and wavy background
-- Interactive timeline of professional experience
-- Animated about section with parallax text reveal
-- Skills showcase with infinite sliders
-- Modern, minimalist design with custom animations
-
-## Tech Stack
-
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- React Use Measure
-- Particles.js
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-1. Clone the repository:
-```bash
-git clone [your-repo-url]
-```
+First, run the development server:
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Run the development server:
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Features
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- Responsive design
-- Smooth animations
-- Interactive UI elements
-- Modern typography with Outfit and Inter fonts
-- Custom color scheme
-
-## Color Scheme
-
-- Primary Blue: #2563eb
-- Accent Orange: #f97316
-- Dark: #111827
-- White: #ffffff
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 

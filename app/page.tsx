@@ -1,17 +1,17 @@
-import { WavyBackground } from "@/components/ui/wavy-background";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import { TimelineDemo } from "@/components/ui/timeline.demo";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section id="hero" className="h-screen relative">
-        <div className="absolute inset-0 w-full h-full">
+      <section id="hero" className="h-screen relative overflow-hidden">
+        <div className="absolute inset-0 w-full h-full z-0">
           <SparklesCore
             id="tsparticlesfullpage"
             background="transparent"
@@ -23,27 +23,31 @@ export default function Home() {
             speed={1}
           />
         </div>
-        <div className="relative z-10 h-full">
-          <WavyBackground 
-            className="max-w-5xl mx-auto h-full flex items-center justify-center"
-            colors={["#2563eb", "#f97316"]}
-            backgroundFill="transparent"
-            blur={5}
-            waveOpacity={0.5}
-            speed="slow"
-          >
-            <div className="text-center">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl text-[#111827] font-outfit font-bold">
-                France
-                <br />
-                Annobil
-              </h1>
-              <p className="text-lg md:text-xl mt-6 text-[#111827]/80 font-inter max-w-2xl mx-auto">
-              I’m a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics.
-              </p>
-            </div>
-          </WavyBackground>
-        </div>
+        <BackgroundGradientAnimation
+          gradientBackgroundStart="transparent"
+          gradientBackgroundEnd="transparent"
+          firstColor="37, 99, 235"
+          secondColor="249, 115, 22"
+          thirdColor="37, 99, 235"
+          fourthColor="249, 115, 22"
+          fifthColor="37, 99, 235"
+          pointerColor="249, 115, 22"
+          size="150%"
+          blendingValue="screen"
+          className="relative z-10 h-full flex items-center justify-center"
+          containerClassName="!absolute inset-0"
+        >
+          <div className="text-center relative z-20">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl text-[#111827] font-outfit font-bold">
+              France
+              <br />
+              Annobil
+            </h1>
+            <p className="text-lg md:text-xl mt-6 text-[#111827]/80 font-inter max-w-2xl mx-auto">
+              I&apos;m a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics.
+            </p>
+          </div>
+        </BackgroundGradientAnimation>
       </section>
 
       {/* Timeline Section */}
