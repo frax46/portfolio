@@ -7,7 +7,7 @@ const menuItems = [
   { name: 'HOME', href: '#hero' },
   { name: 'JOURNEY', href: '#projects' },
   { name: 'ABOUT', href: '#about' },
-  { name: 'CONTACT', href: '#contact' },
+  { name: 'SKILLS', href: '#skills' },
 ];
 
 export function MenuOverlay() {

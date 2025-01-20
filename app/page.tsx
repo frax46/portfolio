@@ -3,7 +3,9 @@ import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import { TimelineDemo } from "@/components/ui/timeline.demo";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { InfiniteSliderCentered } from "@/components/ui/infinite-slider-centered";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 import Image from "next/image";
 
 export default function Home() {
@@ -43,9 +45,15 @@ export default function Home() {
               <br />
               Annobil
             </h1>
-            <p className="text-lg md:text-xl mt-6 text-[#111827]/80 font-inter max-w-2xl mx-auto">
-              I&apos;m a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics.
-            </p>
+            <TypingAnimation
+              text="I'm a tech enthusiast with a passion for AI, cryptocurrency, gaming, and the evolving world of robotics. I thrive on innovation, problem-solving, and exploring new ideas that challenge the way we think.
+
+Beyond technology, I enjoy anime, thought-provoking mysteries, and puzzles that keep my mind engaged. I believe in the power of creativity and forward-thinking solutions, always seeking ways to push boundaries while maintaining a balanced, enjoyable life.
+
+Whether it's building cutting-edge solutions, discussing the future of decentralized systems, or simply exploring the next big idea, I'm always excited to dive in."
+              className="text-lg md:text-xl mt-6 text-[#111827]/80 font-inter max-w-2xl mx-auto"
+              duration={50}
+            />
           </div>
         </BackgroundGradientAnimation>
       </section>
@@ -97,51 +105,43 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="min-h-[50vh] bg-white py-20">
+      <section id="skills" className="min-h-[50vh] bg-white py-20">
         <div className="container mx-auto px-6 mb-10">
           <h2 className="text-4xl md:text-6xl font-outfit font-bold text-[#111827] mb-12 max-w-3xl">
             Skills & Technologies
           </h2>
         </div>
-        <InfiniteSlider duration={30} className="mb-8">
-          <div className="flex items-center gap-4">
+        <InfiniteSliderCentered duration={30} className="mb-8">
+          <div className="flex items-center justify-center gap-4">
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#2563eb]">HTML5</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
-              <p className="text-2xl font-outfit font-bold text-[#2563eb]">CSS3</p>
+              <p className="text-2xl font-outfit font-bold text-[#f97316]">CSS3</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#2563eb]">JavaScript</p>
             </div>
-          </div>
-        </InfiniteSlider>
-        <InfiniteSlider duration={30} reverse className="mb-8">
-          <div className="flex items-center gap-4">
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#f97316]">MySQL</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
-              <p className="text-2xl font-outfit font-bold text-[#f97316]">jQuery</p>
+              <p className="text-2xl font-outfit font-bold text-[#2563eb]">jQuery</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#f97316]">Bootstrap</p>
             </div>
-          </div>
-        </InfiniteSlider>
-        <InfiniteSlider duration={30}>
-          <div className="flex items-center gap-4">
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#2563eb]">WordPress</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
-              <p className="text-2xl font-outfit font-bold text-[#2563eb]">React</p>
+              <p className="text-2xl font-outfit font-bold text-[#f97316]">React</p>
             </div>
             <div className="flex items-center justify-center bg-[#111827] p-8 rounded-xl min-w-60">
               <p className="text-2xl font-outfit font-bold text-[#2563eb]">Next.js</p>
             </div>
           </div>
-        </InfiniteSlider>
+        </InfiniteSliderCentered>
       </section>
 
       <StackedCircularFooter />

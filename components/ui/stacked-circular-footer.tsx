@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 function StackedCircularFooter() {
   return (
@@ -15,13 +16,33 @@ function StackedCircularFooter() {
               className="object-cover"
             />
           </div>
-          <nav className="mb-8 flex flex-wrap justify-center gap-6">
-            <a href="#" className="text-white/70 hover:text-[#f97316] transition-colors">Home</a>
-            <a href="#" className="text-white/70 hover:text-[#f97316] transition-colors">About</a>
-            <a href="#" className="text-white/70 hover:text-[#f97316] transition-colors">Services</a>
-            <a href="#" className="text-white/70 hover:text-[#f97316] transition-colors">Projects</a>
-            <a href="#" className="text-white/70 hover:text-[#f97316] transition-colors">Contact</a>
+
+          {/* Navigation Menu */}
+          <nav className="mb-8">
+            <ul className="flex flex-wrap justify-center gap-8 text-sm font-medium text-white/70">
+              <li>
+                <Link href="#hero" className="hover:text-[#2563eb] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="#projects" className="hover:text-[#2563eb] transition-colors">
+                  Journey
+                </Link>
+              </li>
+              <li>
+                <Link href="#about" className="hover:text-[#2563eb] transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="#skills" className="hover:text-[#2563eb] transition-colors">
+                  Skills
+                </Link>
+              </li>
+            </ul>
           </nav>
+          
           <div className="mb-8 flex space-x-4">
             <Button variant="outline" size="icon" className="rounded-full text-white border-white/20 bg-transparent hover:bg-[#2563eb] hover:text-white">
               <Facebook className="h-4 w-4" />

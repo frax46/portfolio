@@ -14,6 +14,7 @@ module.exports = {
         third: "moveInCircle 25s linear infinite",
         fourth: "moveHorizontal 20s ease infinite",
         fifth: "moveInCircle 30s ease infinite",
+        slide: "slide 30s linear infinite",
       },
       keyframes: {
         moveHorizontal: {
@@ -47,6 +48,14 @@ module.exports = {
           },
           "100%": {
             transform: "translateY(-25%)",
+          },
+        },
+        slide: {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-100%)",
           },
         },
       },
