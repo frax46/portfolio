@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Portfolio',
-  description: 'My professional portfolio',
+  title: 'France Annobil | Portfolio',
+  description: 'Professional portfolio showcasing my journey, skills, and expertise in web development and technology',
 };
 
 export default function RootLayout({
@@ -26,14 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-white font-inter">
+    <html lang="en" className={`${outfit.variable} ${inter.variable} scroll-smooth`}>
+      <body className="min-h-screen font-sans antialiased bg-white">
         <Link 
           href="/" 
-          className="fixed top-8 left-8 z-50 mix-blend-difference"
+          className="fixed top-8 left-8 z-50 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full hover:bg-white/20 transition-all"
         >
-          <span className="font-outfit text-lg tracking-wider text-white">
-            PORTFOLIO
+          <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white">
+            FRANCE<span className="text-blue-600">.</span>
           </span>
         </Link>
         <MenuOverlay />
