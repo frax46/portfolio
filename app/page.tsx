@@ -2,14 +2,36 @@
 
 import { TimelineDemo } from "@/components/ui/timeline.demo";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [errorLogged, setErrorLogged] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    // Add global error handling for fetch errors
+    const originalFetch = window.fetch;
+    window.fetch = async function(...args) {
+      try {
+        const response = await originalFetch(...args);
+        return response;
+      } catch (error) {
+        console.error('Fetch error detected:', error, 'URL:', args[0]);
+        if (!errorLogged) {
+          setErrorLogged(true);
+        }
+        throw error;
+      }
+    };
+
+    return () => {
+      window.fetch = originalFetch;
+    };
+  }, [errorLogged]);
 
   return (
     <main className="bg-white text-gray-900">
@@ -140,6 +162,13 @@ export default function Home() {
                       priority
                       sizes="(max-width: 768px) 18rem, 24rem"
                       className="object-cover object-center z-10 grayscale hover:grayscale-0 transition-all duration-500"
+                      onError={(e) => {
+                        // If image fails to load, use a fallback styling
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null; // Prevent infinite callbacks
+                        target.style.display = 'none';
+                        target.parentElement!.style.backgroundColor = '#f0f9ff';
+                      }}
                     />
                   </div>
                   
