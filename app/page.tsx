@@ -2,7 +2,6 @@
 
 import { TimelineDemo } from "@/components/ui/timeline.demo";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function Home() {
@@ -153,8 +152,8 @@ export default function Home() {
             
             <div className="md:col-span-4 self-end">
               <p className="text-sm text-gray-500 tracking-wide">
-                51° 30' 35.5140'' N<br />
-                0° 7' 5.1312'' W
+                51° 30&apos; 35.5140&quot; N<br />
+                0° 7&apos; 5.1312&quot; W
               </p>
             </div>
           </div>
@@ -279,9 +278,9 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
             <div className="md:col-span-6">
-              <h2 className="text-5xl md:text-6xl font-light mb-16">Let's create <span className="text-blue-500">something</span> together.</h2>
+              <h2 className="text-5xl md:text-6xl font-light mb-16">Let&apos;s create <span className="text-blue-500">something</span> together.</h2>
               <p className="text-lg font-light leading-relaxed mb-16">
-                I'm always open to new opportunities and interesting projects. Feel free to reach out if you'd like to connect.
+                I&apos;m always open to new opportunities and interesting projects. Feel free to reach out if you&apos;d like to connect.
               </p>
               <a href="mailto:hello@franceannobil.com" className="inline-block text-lg border-b border-blue-500 text-blue-500 pb-1 hover:text-blue-600 hover:border-blue-600 transition-colors">
                 hello@franceannobil.com
