@@ -28,14 +28,16 @@ export default function Expertise() {
           {/* Expertise 2 */}
           <div className="space-y-8">
             <p className="text-sm text-gray-800">[ <span className="text-blue-600">E.</span> 02/03 ]</p>
-            <div className="mb-8">
-              <h3 className="text-lg font-medium mb-2">Backend Systems</h3>
-              <p className="text-gray-800 mb-4">While it's been a while since I've worked with backend technologies, I have a solid foundation and can quickly get back up to speed with server-side development.</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-blue-600 text-sm">Node.js</span>
-                <span className="text-blue-600 text-sm">Express</span>
-                <span className="text-blue-600 text-sm">MongoDB</span>
-                <span className="text-blue-600 text-sm">RESTful APIs</span>
+            <h3 className="text-3xl font-light text-gray-900">Backend Systems</h3>
+            <div className="space-y-4">
+              <p className="text-lg font-light leading-relaxed text-gray-900">
+                While it's been a while since I've worked with backend technologies, I have a solid foundation and can quickly get back up to speed with server-side development.
+              </p>
+              <div className="pt-6 border-t border-blue-100 flex flex-wrap gap-4">
+                <span className="text-sm text-gray-800">Node.js</span>
+                <span className="text-sm text-gray-800">Express</span>
+                <span className="text-sm text-gray-800">MongoDB</span>
+                <span className="text-sm text-gray-800">RESTful APIs</span>
               </div>
             </div>
           </div>
