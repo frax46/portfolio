@@ -1,29 +1,37 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Hero() {
+  const [yearSuffix, setYearSuffix] = useState<string>('');
+
+  useEffect(() => {
+    setYearSuffix(new Date().getFullYear().toString().substring(2));
+  }, []);
+  
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-between px-6 md:px-16 pt-20 pb-10 relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with Mask Effect */}
       <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 to-white/90 mix-blend-overlay"></div>
         <Image 
-          src="/france.png" 
+          src="/afro.webp" 
           alt="Background"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-20 blur-sm"
+          className="object-cover object-center opacity-60"
+          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)' }}
           onError={(e) => {
-            // If image fails to load, use a fallback styling
             const target = e.target as HTMLImageElement;
-            target.onerror = null; // Prevent infinite callbacks
+            target.onerror = null;
             target.style.display = 'none';
             target.parentElement!.style.backgroundColor = '#f0f9ff';
           }}
         />
-        <div className="absolute inset-0 bg-white/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/90"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,white_100%)] opacity-60"></div>
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -67,11 +75,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Footer with year only - no navigation */}
+      {/* Footer with year */}
       <div className="mt-auto max-w-7xl mx-auto w-full relative z-10">
         <div className="border-t border-gray-200 pt-8">
           <p className="text-sm tracking-widest uppercase text-gray-800">
-            [ <span className="text-blue-600">Init.</span> {new Date().getFullYear().toString().substring(2)} ]
+            [ <span className="text-blue-600">Init.</span> {yearSuffix} ]
           </p>
         </div>
       </div>

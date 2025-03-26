@@ -1,11 +1,23 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Particles from '../ui/Particles';
 
 export default function Contact() {
+  const [currentMonth, setCurrentMonth] = useState<string>('');
+  const [currentYear, setCurrentYear] = useState<number>(0);
+
+  useEffect(() => {
+    setCurrentMonth(new Date().toLocaleString('default', { month: 'long' }));
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+  
   return (
-    <section id="contact" className="py-32 px-6 md:px-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-32 px-6 md:px-16 bg-gray-50 relative">
+      {/* Particles Background */}
+      <Particles />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <p className="text-sm tracking-widest uppercase text-gray-800 mb-20">[ <span className="text-blue-600">Contact</span> ]</p>
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
@@ -37,7 +49,7 @@ export default function Contact() {
             
             <div className="mt-16 pt-16 border-t border-blue-100">
               <p className="text-sm text-gray-800">
-                Available for freelance projects starting <span className="text-blue-600">{new Date().toLocaleString('default', { month: 'long' })}</span> {new Date().getFullYear()}
+                Available for freelance projects starting {currentMonth && <span className="text-blue-600">{currentMonth}</span>} {currentYear || ''}
               </p>
             </div>
           </div>

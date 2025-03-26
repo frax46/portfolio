@@ -1,47 +1,84 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Footer() {
+  const [currentYear, setCurrentYear] = useState<number>(0);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+  
   return (
-    <footer className="py-16 px-6 md:px-16 bg-black text-white">
+    <footer className="bg-gray-900 text-white py-20 px-6 md:px-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-          <div className="md:col-span-4">
-            <p className="text-3xl font-light mb-6">Annobil France</p>
-            <p className="text-sm text-gray-300">
-              Software Developer focused on creating elegant solutions to complex problems.
-            </p>
-          </div>
-          
-          <div className="md:col-span-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Navigation Links */}
+          <div className="md:col-span-1">
             <p className="text-sm text-gray-300 mb-6">Navigation</p>
-            <ul className="space-y-4">
-              <li><a href="#hero" className="text-sm text-white hover:text-blue-400 transition-colors">Home</a></li>
-              <li><a href="#projects" className="text-sm text-white hover:text-blue-400 transition-colors">Projects</a></li>
-              <li><a href="#journey" className="text-sm text-white hover:text-blue-400 transition-colors">Journey</a></li>
-              <li><a href="#expertise" className="text-sm text-white hover:text-blue-400 transition-colors">Expertise</a></li>
-              <li><a href="#contact" className="text-sm text-white hover:text-blue-400 transition-colors">Contact</a></li>
-            </ul>
+            <div className="flex flex-col space-y-4">
+              <a href="#" className="text-sm text-white hover:text-blue-400 transition-colors">Home</a>
+              <a href="#" className="text-sm text-white hover:text-blue-400 transition-colors">Projects</a>
+              <a href="#" className="text-sm text-white hover:text-blue-400 transition-colors">Journey</a>
+              <a href="#" className="text-sm text-white hover:text-blue-400 transition-colors">Skills</a>
+              <a href="#" className="text-sm text-white hover:text-blue-400 transition-colors">Contact</a>
+            </div>
           </div>
-          
-          <div className="md:col-span-4">
+
+          {/* Connect Links */}
+          <div className="md:col-span-1">
             <p className="text-sm text-gray-300 mb-6">Connect</p>
-            <div className="flex gap-6">
+            <div className="flex flex-col space-y-4">
               <a href="https://github.com/frax46" className="text-sm text-white hover:text-blue-400 transition-colors">GitHub</a>
               <a href="https://www.linkedin.com/in/france-annobil-27126692/" className="text-sm text-white hover:text-blue-400 transition-colors">LinkedIn</a>
             </div>
           </div>
-        </div>
-        
-        <div className="mt-16 pt-16 border-t border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center">
-          <p className="text-xs text-gray-300">
-            &copy; {new Date().getFullYear()} Annobil France. All rights reserved.
-          </p>
-          
-          <p className="text-xs text-gray-300 mt-4 md:mt-0">
-            Designed and built with passion
-          </p>
+
+          {/* Copyright */}
+          <div className="md:col-span-2 flex items-center justify-between">
+            <p className="text-sm text-gray-300">
+              © {currentYear || ''} France Annobil. All rights reserved.
+            </p>
+
+            {/* Masked Image */}
+            <div className="relative w-48 h-48">
+              {/* Brush Stroke SVG Mask */}
+              <svg width="0" height="0">
+                <defs>
+                  <clipPath id="brushStroke" clipPathUnits="objectBoundingBox">
+                    <path d="M0.3,0.1 
+                      C0.4,0.05 0.5,0 0.7,0 
+                      C0.9,0 1,0.2 1,0.4 
+                      C1,0.6 0.9,0.8 0.7,0.9 
+                      C0.5,1 0.3,0.95 0.2,0.85 
+                      C0.1,0.75 0,0.6 0,0.4 
+                      C0,0.2 0.1,0.15 0.3,0.1 
+                      M0.4,0.3 
+                      C0.3,0.4 0.3,0.5 0.4,0.6 
+                      C0.5,0.7 0.6,0.7 0.7,0.6 
+                      C0.8,0.5 0.8,0.4 0.7,0.3 
+                      C0.6,0.2 0.5,0.2 0.4,0.3
+                      Z" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <div className="relative w-full h-full group">
+                <div className="absolute inset-0 bg-blue-400/10 transform transition-transform duration-500 group-hover:scale-110" style={{ clipPath: 'url(#brushStroke)' }}></div>
+                <div className="relative w-full h-full transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-3" style={{ clipPath: 'url(#brushStroke)' }}>
+                  <Image
+                    src="/images/anime.jpg"
+                    alt="Decorative footer image"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                {/* Brush Stroke Effects */}
+                <div className="absolute inset-0 opacity-50 mix-blend-overlay bg-gradient-to-br from-blue-400/30 to-transparent" style={{ clipPath: 'url(#brushStroke)' }}></div>
+                <div className="absolute inset-0 border-2 border-blue-400/20" style={{ clipPath: 'url(#brushStroke)' }}></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
