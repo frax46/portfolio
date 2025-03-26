@@ -31,7 +31,7 @@ export default function Expertise() {
             <h3 className="text-3xl font-light text-gray-900 mb-6">Backend Systems</h3>
             <div className="flex flex-col flex-grow">
               <p className="text-lg font-light leading-relaxed text-gray-900 mb-6">
-                While it's been a while since I've worked with backend technologies, I have a solid foundation and can quickly get back up to speed with server-side development.
+                While it&apos;s been a while since I&apos;ve worked with backend technologies, I have a solid foundation and can quickly get back up to speed with server-side development.
               </p>
               <div className="pt-6 mt-auto border-t border-blue-100 flex flex-wrap gap-4">
                 <span className="text-sm text-gray-800">Node.js</span>
