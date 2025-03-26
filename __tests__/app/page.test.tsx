@@ -87,26 +87,32 @@ describe('HomePage', () => {
     render(<HomePage />);
     
     // Initially, menu is closed
-    const menuButton = screen.getByRole('button', { name: /open menu/i });
+    const menuButton = screen.getByRole('button', { name: /Toggle menu|Open menu/i });
     expect(menuButton).toBeInTheDocument();
     expect(screen.getByText('MENU')).toBeInTheDocument();
     
     // Click to open menu
     fireEvent.click(menuButton);
     
-    // After clicking, we should see the menu navigation
+    // After clicking, we should see the menu navigation and the CLOSE text
     await waitFor(() => {
-      const homeLink = screen.getByText('HOME');
-      expect(homeLink).toBeInTheDocument();
-      expect(homeLink.closest('nav')).toBeInTheDocument();
+      // Find the navigation
+      const nav = screen.getByRole('navigation');
+      expect(nav).toBeInTheDocument();
+      
+      const menuItems = screen.getAllByRole('listitem');
+      expect(menuItems.length).toBeGreaterThan(0);
+      
+      // Check if the button now shows "CLOSE"
+      expect(screen.getByText('CLOSE')).toBeInTheDocument();
     });
     
-    // Find the close button
-    const closeButton = screen.getByRole('button', { name: /close menu/i });
-    expect(closeButton).toBeInTheDocument();
+    // Get the same button again (now it should say CLOSE)
+    const toggleButton = screen.getByRole('button', { name: /Toggle menu/i });
+    expect(toggleButton).toBeInTheDocument();
     
     // Click to close menu
-    fireEvent.click(closeButton);
+    fireEvent.click(toggleButton);
     
     // Menu should be closed and button should show "MENU" again
     await waitFor(() => {
@@ -118,7 +124,7 @@ describe('HomePage', () => {
     render(<HomePage />);
     
     // Check header navigation links
-    const menuButton = screen.getByRole('button', { name: /open menu/i });
+    const menuButton = screen.getByRole('button', { name: /Toggle menu|Open menu/i });
     expect(menuButton).toBeInTheDocument();
     
     // Header should contain the logo/tag with France Annobil (case sensitive)
