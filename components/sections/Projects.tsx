@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 export default function Projects() {
   return (
@@ -19,8 +20,14 @@ export default function Projects() {
                 focusing on user experience and performance.
               </p>
             </div>
-            <div className="md:col-span-7 aspect-video bg-blue-50 rounded-sm flex items-center justify-center border border-blue-100">
-              <p className="text-blue-600">Project Image</p>
+            <div className="md:col-span-7 aspect-video bg-blue-50 rounded-sm relative overflow-hidden border border-blue-100">
+              <Image 
+                src="/binocolo.png"
+                alt="Binocolo project screenshot"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:opacity-90 transition-all duration-300"
+              />
             </div>
           </div>
           
