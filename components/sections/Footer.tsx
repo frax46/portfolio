@@ -67,7 +67,7 @@ export default function Footer() {
                 <div className="absolute inset-0 bg-blue-400/10 transform transition-transform duration-500 group-hover:scale-110" style={{ clipPath: 'url(#brushStroke)' }}></div>
                 <div className="relative w-full h-full transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-3" style={{ clipPath: 'url(#brushStroke)' }}>
                   <Image
-                    src="/images/anime.jpg"
+                    src="/afro.webp"
                     alt="Decorative footer image"
                     fill
                     className="object-cover object-center"

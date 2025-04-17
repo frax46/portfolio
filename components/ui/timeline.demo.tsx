@@ -4,7 +4,7 @@ import { Timeline } from "@/components/ui/timeline";
 export function TimelineDemo() {
   const data = [
     {
-      title: "2019-Present",
+      title: "2019-2025",
       content: (
         <div className="space-y-6">
           <div>
